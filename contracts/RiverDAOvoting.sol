@@ -113,15 +113,15 @@ at a DEX if they missed the ICO. In this case we are just going to use token dir
 minted from their contract
 */
 
-    function registerVoters(address voterAddress) public Status0 {
-        require(!voters[voterAddress].isRegistered, "Already registered to vote");
-        require(vToken.balanceOf(msg.sender) >= 1000, "Not enough token to register");
+    function registerVoters() public Status0 {
+        require(!voters[msg.sender].isRegistered, "Already registered to vote");
+        require(vToken.balanceOf(msg.sender) >= 1000000000000000000000, "Not enough token to register");
 
-        voters[voterAddress].isRegistered = true;
-        voters[voterAddress].hasVoted = false;
-        voters[voterAddress].voteProposalId = 0;
+        voters[msg.sender].isRegistered = true;
+        voters[msg.sender].hasVoted = false;
+        voters[msg.sender].voteProposalId = 0;
 
-        emit VoterRegistered(voterAddress);
+        emit VoterRegistered(msg.sender);
     }
 
 /*
