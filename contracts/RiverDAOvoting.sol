@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract States{
+contract Voting{
 //FOR A SIMPLE USE WITH ERC20 TOKEN
 
     using Address for address;
@@ -134,7 +134,7 @@ to register a proposal for voting.
 
 
     // (ADMIN) TO START PROPOSAL PERIOD.
-    function startProposalsReg() public Admin Status0 {
+    function startProposalReg() public Admin Status0 {
         state = Status.ProposalRegistrationsStart;
 
         emit ProposalRegStart();
@@ -160,7 +160,7 @@ to register a proposal for voting.
     }
 
     // GET FUNCTION ID AND DESCRIPTION
-    function getProposlsNumber() public view returns (uint) {
+    function getProposalNumber() public view returns (uint) {
         return proposals.length;
     }
     function getProposalDescription(uint index) public view returns (string memory) {
@@ -214,7 +214,7 @@ Also, public function to vote is available for registered voters.
 START OF AFTERVOTING FUNCTIONS.
 
 Most functions are public to check winning proposalid and descriptions.
-ADMIN function are tallyVotes to count votes and set the winning proposal.
+ADMIN function is tallyVotes to count votes and set the winning proposal.
 */ 
 
     //(ADMIN) TALLY OF VOTES
