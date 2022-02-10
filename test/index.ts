@@ -15,9 +15,11 @@ describe("Deployment", function () {
   })
 })
 
-describe("Registering error", function () {
+
+// THIS TEST IS FAILED ON PURPOSE
+describe("Registering error with tokens", function () {
   it("Should fail and throw error 'Not enough token to register' ", async function () {
-    const [addr1] = await ethers.getSigners();
+    const [owner, addr1] = await ethers.getSigners();
 
     const VToken = await ethers.getContractFactory("VToken");
     const vToken = await VToken.deploy();
@@ -28,6 +30,22 @@ describe("Registering error", function () {
     await vToken.transfer(addr1.address, "20000000000000000000");
 
     await riverDAOvoting.connect(addr1).registerVoters();
+
+  })
+})
+
+// THIS TEST IS FAILED ON PURPOSE
+describe("Registering error Admin", function () {
+  it("Should fail and throw error 'Message sender should be Admin.' ", async function () {
+    const [owner, addr1] = await ethers.getSigners();
+
+    const VToken = await ethers.getContractFactory("VToken");
+    const vToken = await VToken.deploy();
+
+    const RiverDAOvoting = await ethers.getContractFactory("Voting");
+    const riverDAOvoting = await RiverDAOvoting.deploy(vToken.address);
+
+    await riverDAOvoting.connect(addr1).startProposalReg();
 
   })
 })
@@ -78,7 +96,7 @@ describe("Succesful Proposal Registration", function () {
 
 describe("Succesful Voting", function () {
   it("Proposal '0' should win", async function () {
-    const [addr1, addr2, addr3, addr4, addr5, addr6, addr7, addr8] = await ethers.getSigners();
+    const [owner, addr1, addr2, addr3, addr4, addr5, addr6, addr7, addr8] = await ethers.getSigners();
 
     const VToken = await ethers.getContractFactory("VToken");
     const vToken = await VToken.deploy();
@@ -123,6 +141,8 @@ describe("Succesful Voting", function () {
 
     await riverDAOvoting.endVoting();
     await riverDAOvoting.tallyVotes();
+
+    console.log(await riverDAOvoting.winningCount());
 
     expect(await riverDAOvoting.winningDesc()).to.equal("Make Pinguins Fly")
 

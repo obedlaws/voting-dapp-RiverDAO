@@ -266,7 +266,7 @@ the current Status of the voting Dapp.
     }
 
     //CHECK CURRENT STATUS OF VOTING DAPP
-    function curretnStatus() public view returns(Status) {
+    function currentStatus() public view returns(Status) {
         return state;
     }
 
