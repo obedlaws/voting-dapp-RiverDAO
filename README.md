@@ -1,5 +1,4 @@
-# RIVER DAO VOTING DAPP
-## with some ERC20 implementation
+# RIVER DAO VOTING DAPP /w ERC20 implementation.
 
 This smart contract is a small project creating a voting dapp that will be used
 by a DAO where regitered voters need to have a balance equal or more than 100 VTK to register to
