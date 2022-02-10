@@ -10,7 +10,7 @@ This is a long smart contract so there will be some anotation arround functions 
 dont get confused when reading the documentation.
 
 #### [Contracts](https://github.com/obedlaws/voting-dapp-RiverDAO/tree/master/contracts)
-#### [TS Tests](https://github.com/obedlaws/voting-dapp-RiverDAO/blob/master/test/index.ts)
+#### [TS Tests](https://github.com/obedlaws/voting-dapp-RiverDAO/tree/master/test)
 
 ## Stack
 Typescript, Solidity, Hardhat, ethers.js
